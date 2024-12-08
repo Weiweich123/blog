@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="樂高創意與停格動畫部落格，分享創意動畫製作與技巧。">
+    <meta name="author" content="CH 峻瑋">
+    <meta property="og:title" content="CH 峻瑋 - 停格動畫部落格">
+    <meta property="og:description" content="樂高創意與停格動畫部落格，分享創意動畫製作與技巧。">
+    <title>{% block title %}CH 峻瑋 - 停格動畫部落格{% endblock %}</title>
+    <!-- 引入 Google 字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 外部樣式檔 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- 頂部導航欄 -->
+    <header>
+        <nav>
+            <!-- 網頁名稱放在導航欄左邊，點擊後返回首頁 -->
+            <a href="{{ url_for('index') }}" class="site-name">CH 峻瑋 - 停格動畫部落格</a>
+            <ul>
+                <li><a href="{{ url_for('index') }}">首頁</a></li>
+                <li><a href="{{ url_for('new_article') }}">新增文章</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('logout') }}">登出</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">登入</a></li>
+                    <li><a href="{{ url_for('register') }}">註冊</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 顯示 Flash 訊息 -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- 主體內容區域 -->
+    <div class="container">
+        {% block content %}
+        <div class="article-card">
+            <h2>{{ article.title }}</h2>
+            <p>作者：{{ article.author.username }}</p>
+            <!-- 顯示文章內容，並處理換行與超連結 -->
+            <p>{{ article.content|safe }}</p>
+        </div>
+        {% endblock %}
+    </div>
+
+    <!-- 頁腳 -->
+    <footer>
+        <p>&copy; 2024 CH 峻瑋 - 樂高創意與停格動畫樂園</p>
+    </footer>
+</body>
+</html>

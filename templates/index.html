@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="new-post">
+    <!-- 檢查是否登入，只有登入的用戶才能看到新增文章的按鈕 -->
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('new_article') }}" class="btn">新增文章</a>
+    {% else %}
+        <p>請先 <a href="{{ url_for('login') }}">登入</a> 才能新增文章。</p>
+    {% endif %}
+</div>
+
+<div class="article-list">
+    <h2>文章列表</h2>
+    {% if articles %}
+        {% for article in articles %}
+            <div class="article-card">
+                <h3>{{ article.title }}</h3>
+                <p>作者：{{ article.author.username }}</p>
+                <!-- 顯示文章發佈時間 -->
+                <p class="timestamp">發佈時間：
+                    {% if article.created_at %}
+                        {{ article.created_at.strftime('%Y-%m-%d %H:%M') }}
+                    {% else %}
+                        未知時間
+                    {% endif %}
+                </p>
+                <!-- 截斷文章內容，避免超過顯示長度 -->
+                <p>{{ article.preview }}{% if article.content|length > 100 %}...{% endif %}</p>
+                <br></br>
+                <!-- 修正的連結 -->
+                <a href="{{ url_for('article', id=article.id) }}" class="btn">閱讀全文</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>目前沒有任何文章。</p>
+        {% if current_user.is_authenticated %}
+            <p>還沒發表任何文章，<a href="{{ url_for('new_article') }}">立即新增一篇</a>！</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

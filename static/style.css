@@ -1,0 +1,201 @@
+/* 全局樣式 */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    color: #333;
+}
+
+/* 頁首樣式 */
+header {
+    background: linear-gradient(135deg, #222, #444);  /* 漸變效果 */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header .site-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+header .site-name:hover {
+    color: #ffcc00;  /* 滑鼠懸停時變色 */
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;  /* 讓網站名稱與導航項目左右對齊 */
+    align-items: center;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-left: 20px;  /* 項目之間的間隔 */
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+header nav ul li a:hover {
+    color: #ffcc00;  /* 懸停變色 */
+}
+
+/* 頁面容器樣式 */
+.container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 按鈕樣式 */
+.btn, form button {
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* 按鈕陰影效果 */
+}
+
+.btn:hover, form button:hover {
+    background-color: #ff8800;  /* 懸停顏色 */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* 更明顯的陰影 */
+}
+
+/* 新增文章按鈕 */
+.new-post {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 文章列表樣式 */
+.article-list {
+    padding: 20px;
+}
+
+.article-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.article-card {
+    background: #fff;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.article-card h3 {
+    margin: 0 0 10px;
+    color: #ff8800;
+}
+
+.article-card p {
+    color: #555;
+    margin: 5px 0;
+}
+
+/* 頁尾樣式 */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* 表單樣式 (新增和編輯文章用) */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* 設置 box-sizing: border-box 來確保內邊距不影響寬度 */
+form input[type="text"], form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* 新增這一行 */
+}
+
+/* 調整 textarea 的最小高度 */
+form textarea {
+    min-height: 150px; /* 你可以根據需要修改這個高度 */
+}
+
+/* 回到列表的按鈕 */
+.back-btn {
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+/* 自訂的頁面/元件設計 */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 對表單欄位的強調 */
+input:focus, textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+input, textarea {
+    transition: border-color 0.3s ease;
+}

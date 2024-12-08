@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    登入 - 樂高創意與停格動畫部落格
+{% endblock %}
+
+{% block content %}
+<h2>登入帳戶</h2>
+
+<!-- 顯示錯誤訊息 -->
+{% if error %}
+  <div class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+{% endif %}
+
+<!-- 顯示 Flash 訊息 -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+                <li class="alert {{ 'alert-' + category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<form action="{{ url_for('login') }}" method="POST">
+    <!-- 使用 Flask-WTF 表單 -->
+    {{ form.hidden_tag() }} <!-- 這裡是 Flask-WTF 用來插入 CSRF token 的地方 -->
+    
+    <div class="form-group">
+        <label for="username">用戶名</label>
+        {{ form.username(class="form-control") }} <!-- 渲染用戶名欄位 -->
+    </div>
+
+    <div class="form-group">
+        <label for="password">密碼</label>
+        {{ form.password(class="form-control") }} <!-- 渲染密碼欄位 -->
+    </div>
+
+    <button type="submit" class="btn btn-primary">登入</button>
+</form>
+
+<!-- 註冊帳戶連結 -->
+<p>還沒有帳戶？<a href="{{ url_for('register') }}" class="btn btn-secondary">註冊</a></p>
+{% endblock %}
