@@ -1,0 +1,24 @@
+# Python 編譯產物
+__pycache__/
+*.py[cod]
+*.pyo
+
+# 虛擬環境目錄
+venv/
+blog/
+
+# Flask 設定檔和資料夾
+instance/
+
+# 日誌檔案
+*.log
+
+# 資料庫檔案
+*.sqlite3
+
+# 操作系統檔案
+.DS_Store
+Thumbs.db
+
+# 配置檔案
+*.env
