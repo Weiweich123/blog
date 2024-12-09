@@ -7,9 +7,6 @@ __pycache__/
 venv/
 blog/
 
-# Flask 設定檔和資料夾
-instance/
-
 # 日誌檔案
 *.log
 
